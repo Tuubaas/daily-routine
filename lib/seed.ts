@@ -93,7 +93,3 @@ export async function seedCommitments() {
     insertedCommitments,
   };
 }
-
-export function dropCommitments() {
-  return sql.query(`DROP TABLE IF EXISTS commitments`);
-}

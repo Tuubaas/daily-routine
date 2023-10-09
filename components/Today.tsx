@@ -3,13 +3,12 @@ import { db, CommitmentsTable } from '@/lib/drizzle';
 import type { Commitment } from '@/lib/drizzle';
 import { eq } from 'drizzle-orm';
 import dayjs from 'dayjs';
-import { dropCommitments, seedCommitments } from '@/lib/seed';
+import { seedCommitments } from '@/lib/seed';
 
 export default async function Today() {
   let commitments: Commitment[];
 
   try {
-    await dropCommitments();
     commitments = await db
       .select()
       .from(CommitmentsTable)
