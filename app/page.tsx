@@ -1,14 +1,15 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { Suspense } from 'react'
-import Table from '@/components/table'
-import TablePlaceholder from '@/components/table-placeholder'
-import ExpandingArrow from '@/components/expanding-arrow'
+import Image from 'next/image';
+import Link from 'next/link';
+import { Suspense } from 'react';
+import Table from '@/components/table';
+import TablePlaceholder from '@/components/table-placeholder';
+import ExpandingArrow from '@/components/expanding-arrow';
+import Today from '@/components/Today';
 
-export const preferredRegion = 'home'
-export const dynamic = 'force-dynamic'
+export const preferredRegion = 'home';
+export const dynamic = 'force-dynamic';
 
-export default function Home() {
+export function Home() {
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center">
       <Link
@@ -94,5 +95,16 @@ export default function Home() {
         </Link>
       </div>
     </main>
-  )
+  );
+}
+
+export default function Index() {
+  return (
+    <main>
+      <div className="flex flex-col">
+        <Today />
+        {/*<Todos />*/}
+      </div>
+    </main>
+  );
 }
