@@ -1,12 +1,15 @@
 import { sql } from '@vercel/postgres';
-import { db } from '@/lib/drizzle';
 import {
+  db,
   UsersTable,
   User,
   NewUser,
   CommitmentsTable,
   Commitment,
   NewCommitment,
+  TodosTable,
+  Todo,
+  NewTodo,
 } from './drizzle';
 
 const newUsers: NewUser[] = [
@@ -92,4 +95,42 @@ export async function seedCommitments() {
     createTable,
     insertedCommitments,
   };
+}
+
+const newTodos: NewTodo[] = [
+  {
+    text: 'Buy groceries',
+    iscompleted: false,
+  },
+  {
+    text: 'Do laundry',
+    iscompleted: false,
+  },
+];
+
+export async function seedTodos() {
+  const createTable = await sql.query(`
+      CREATE TABLE IF NOT EXISTS todos (
+        id SERIAL PRIMARY KEY,
+        text VARCHAR(255) NOT NULL,
+        "iscompleted" BOOLEAN NOT NULL,
+        "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+      );
+  `);
+  console.log(`Created "todos" table`);
+
+  const insertedTodos: Todo[] = await db
+    .insert(TodosTable)
+    .values(newTodos)
+    .returning();
+
+  return {
+    createTable,
+  };
+}
+
+export async function dropTodos() {
+  return sql.query(`
+    DROP TABLE IF EXISTS todos;
+  `);
 }

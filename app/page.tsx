@@ -5,6 +5,7 @@ import Table from '@/components/table';
 import TablePlaceholder from '@/components/table-placeholder';
 import ExpandingArrow from '@/components/expanding-arrow';
 import Today from '@/components/Today';
+import Todos from '@/components/Todos';
 
 export const preferredRegion = 'home';
 export const dynamic = 'force-dynamic';
@@ -101,9 +102,9 @@ export function Home() {
 export default function Index() {
   return (
     <main>
-      <div className="flex flex-col">
+      <div className="flex flex-row [&>div]:p-8">
         <Today />
-        {/*<Todos />*/}
+        <Todos />
       </div>
     </main>
   );
