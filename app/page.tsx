@@ -99,7 +99,7 @@ export function Home() {
   );
 }
 
-export default function Index() {
+export default function Page() {
   return (
     <main>
       <div className="flex flex-row [&>div]:p-8">
