@@ -28,14 +28,28 @@ export default async function Today() {
 
   return (
     <div className="flex flex-col">
-      <h1>{dayjs().format('YYYY-MM-DD')}</h1>
-      {commitments.map((todaysCommitments) => (
-        <ul key={todaysCommitments.id} className="flex flex-col">
-          {todaysCommitments.commitmentlist.map((commitment, i) => (
-            <li key={i}>{commitment}</li>
+      <div className="bg-yellow-200 shadow-md">
+        <h1 className="mt-8 border-b border-gray-400 pl-8 pr-4">
+          <span>{dayjs().format('YYYY-MM-DD')}</span>
+        </h1>
+        <div className="mb-12">
+          {commitments.map((todaysCommitments) => (
+            <ul
+              key={todaysCommitments.id}
+              className="flex flex-col [&>li]:h-8 [&>li]:border-b [&>li]:border-gray-400 [&>li]:pl-8 [&>li]:pr-4"
+            >
+              {todaysCommitments.commitmentlist.map((commitment, i) => (
+                <li key={i} className="flex items-end">
+                  <span>{commitment}</span>
+                </li>
+              ))}
+              <li />
+              <li />
+              <li />
+            </ul>
           ))}
-        </ul>
-      ))}
+        </div>
+      </div>
     </div>
   );
 }
