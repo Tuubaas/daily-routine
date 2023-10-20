@@ -1,12 +1,11 @@
 import { db, TodosTable } from '@/lib/drizzle';
 import type { Todo } from '@/lib/drizzle';
-import { dropTodos, seedTodos } from '@/lib/seed';
 import dayjs from 'dayjs';
+import TodoCheckbox from './TodoCheckbox';
 
-export default async function Todos() {
+export default async function TodoList() {
   let todos: Todo[];
   try {
-    await dropTodos();
     todos = await db.select().from(TodosTable);
   } catch (e: any) {
     if (e.message === `relation "todos" does not exist`) {
@@ -14,7 +13,6 @@ export default async function Todos() {
         'Table does not exist, creating and seeding it with dummy data now...',
       );
       // Table is not created yet
-      await seedTodos();
       todos = await db.select().from(TodosTable);
     } else {
       throw e;
@@ -37,20 +35,23 @@ export default async function Todos() {
   });
 
   return (
-    <div className="flex flex-col border-l">
+    <div className="flex flex-col border-l h-full">
       <h1>Todos</h1>
-      {todos.map((todo) => (
-        <ul key={todo.id} className="flex flex-col">
-          <li
+      <ul className="flex flex-col">
+        {todos.map((todo) => (
+          <>
+            <TodoCheckbox key={todo.id} todo={todo} />
+            {/* <li
             className={`${
               todo.iscompleted ? 'line-through' : ''
             } pt-2 flex justify-between`}
           >
             <p>{todo.text}</p>
             <p>{todo.iscompleted}</p>
-          </li>
-        </ul>
-      ))}
+          </li> */}
+          </>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -27,7 +27,7 @@ export default async function Today() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full">
       <div className="bg-yellow-200 shadow-md">
         <h1 className="mt-8 border-b border-gray-400 pl-8 pr-4">
           <span>{dayjs().format('YYYY-MM-DD')}</span>

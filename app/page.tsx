@@ -1,5 +1,5 @@
 import Today from '@/components/Today';
-import Todos from '@/components/Todos';
+import TodoList from '@/components/TodoList';
 
 export const preferredRegion = 'home';
 export const dynamic = 'force-dynamic';
@@ -9,7 +9,7 @@ export default function Page() {
     <main>
       <div className="flex flex-row [&>div]:p-8 h-full">
         <Today />
-        <Todos />
+        <TodoList />
       </div>
     </main>
   );
