@@ -26,10 +26,10 @@ export default function Page() {
   const today = dayjs().add(1, 'day').format('YYYY-MM-DD');
 
   return (
-    <main>
-      <form action={create}>
+    <main className="flex justify-center">
+      <form action={create} className="flex flex-col max-w-3xl w-full">
         <input name="date" type="date" defaultValue={today} />
-        <textarea name="commitments" />
+        <textarea className="border min-h-[256px]" name="commitments" />
         <button>Submit</button>
       </form>
     </main>

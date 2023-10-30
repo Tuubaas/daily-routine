@@ -38,21 +38,22 @@ export default async function Today() {
           </a>
         </div>
         <div className="mb-12">
-          {[commitments[0]].map((todaysCommitments) => (
-            <ul
-              key={todaysCommitments.id}
-              className="flex flex-col [&>li]:h-8 [&>li]:border-b [&>li]:border-gray-400 [&>li]:pl-8 [&>li]:pr-4"
-            >
-              {todaysCommitments.commitmentlist.map((commitment, i) => (
-                <li key={i} className="flex items-end">
-                  <span>{commitment}</span>
-                </li>
-              ))}
-              <li />
-              <li />
-              <li />
-            </ul>
-          ))}
+          {commitments[0] &&
+            [commitments[0]].map((todaysCommitments) => (
+              <ul
+                key={todaysCommitments.id}
+                className="flex flex-col [&>li]:h-8 [&>li]:border-b [&>li]:border-gray-400 [&>li]:pl-8 [&>li]:pr-4"
+              >
+                {todaysCommitments.commitmentlist.map((commitment, i) => (
+                  <li key={i} className="flex items-end">
+                    <span>{commitment}</span>
+                  </li>
+                ))}
+                <li />
+                <li />
+                <li />
+              </ul>
+            ))}
         </div>
       </div>
       <div className="flex justify-center">

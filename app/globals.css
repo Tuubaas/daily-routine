@@ -10,6 +10,19 @@
 }
 
 body {
+background: linear-gradient(
+  45deg,
+  hsl(0deg 20% 9%) 0%,
+  hsl(352deg 16% 10%) 11%,
+  hsl(344deg 13% 10%) 22%,
+  hsl(335deg 11% 11%) 33%,
+  hsl(325deg 9% 12%) 44%,
+  hsl(310deg 6% 13%) 56%,
+  hsl(290deg 5% 13%) 67%,
+  hsl(272deg 5% 14%) 78%,
+  hsl(255deg 4% 15%) 89%,
+  hsl(240deg 4% 16%) 100%
+);
   color: rgb(var(--foreground-rgb));
   @apply font-default;
 }

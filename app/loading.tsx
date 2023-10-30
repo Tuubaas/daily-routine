@@ -12,15 +12,13 @@ const inter = Inter({
   display: 'swap',
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Loading({}: {}) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} flex justify-center`}>
-        <div className="max-w-5xl min-h-screen">{children}</div>
+      <body
+        className={`${inter.variable} [&>main]:min-h-screen flex justify-center`}
+      >
+        <div className="max-w-5xl">LOADING...</div>
       </body>
     </html>
   );
