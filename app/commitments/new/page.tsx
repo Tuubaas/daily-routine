@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { db, CommitmentsTable } from '@/lib/drizzle';
+import Button from '@/components/Button';
 
 export default function Page() {
   async function create(formData: FormData) {
@@ -33,7 +34,7 @@ export default function Page() {
       >
         <input name="date" type="date" defaultValue={today} />
         <textarea className="min-h-[256px]" name="commitments" />
-        <button>Submit</button>
+        <Button>Submit</Button>
       </form>
     </main>
   );
