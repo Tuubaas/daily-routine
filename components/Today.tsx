@@ -21,7 +21,6 @@ export default async function Today() {
       throw e;
     }
   }
-  console.log(commitments);
 
   return (
     <div className="flex flex-col h-full">
