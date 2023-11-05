@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import './globals.css';
 import { Inter } from 'next/font/google';
 
@@ -19,8 +20,34 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} flex justify-center`}>
-        <div className="max-w-5xl min-h-screen">{children}</div>
+      <body className={`${inter.variable} flex flex-col min-h-screen`}>
+        <div className="flex justify-between items-center text-white p-4">
+          <h1 className="text-3xl font-bold">Daily routine</h1>
+          <nav className="flex gap-4 [&>*]:p-2">
+            <Link href="/" className="hover:underline hover:underline-offset-4">
+              Today
+            </Link>
+            <Link
+              href="/commitments/new"
+              className="hover:underline hover:underline-offset-4"
+            >
+              New Commitment
+            </Link>
+            <Link
+              href="/commitments/update"
+              className="hover:underline hover:underline-offset-4"
+            >
+              Update Commitment
+            </Link>
+            <Link
+              href="/todos"
+              className="hover:underline hover:underline-offset-4"
+            >
+              Todos
+            </Link>
+          </nav>
+        </div>
+        {children}
       </body>
     </html>
   );
