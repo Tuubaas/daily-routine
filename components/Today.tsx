@@ -27,33 +27,24 @@ export default async function Today() {
     <div className="flex flex-col h-full">
       <div className="bg-yellow-200 shadow-md">
         <div className="px-4 flex flex-row justify-between border-b border-gray-400">
-          <h1 className="flex items-end ml-4">
+          <h1 className="flex items-end pl-4 pt-6">
             <span>{dayjs().format('YYYY-MM-DD')}</span>
           </h1>
-          <a
-            href="/commitment/update"
-            className="hover:bg-black/5 flex items-center px-4 my-4 border border-black rounded-2xl cursor-pointer"
-          >
-            Update
-          </a>
         </div>
         <div className="mb-12">
-          {commitments[0] &&
-            [commitments[0]].map((todaysCommitments) => (
-              <ul
-                key={todaysCommitments.id}
-                className="flex flex-col [&>li]:h-8 [&>li]:border-b [&>li]:border-gray-400 [&>li]:pl-8 [&>li]:pr-4"
-              >
-                {todaysCommitments.commitmentlist.map((commitment, i) => (
+          <ul className="flex flex-col [&>li]:h-8 [&>li]:border-b [&>li]:border-gray-400 [&>li]:pl-8 [&>li]:pr-4">
+            {commitments[0] &&
+              [commitments[0]].map((todaysCommitments) =>
+                todaysCommitments.commitmentlist.map((commitment, i) => (
                   <li key={i} className="flex items-end">
                     <span>{commitment}</span>
                   </li>
-                ))}
-                <li />
-                <li />
-                <li />
-              </ul>
-            ))}
+                )),
+              )}
+            <li />
+            <li />
+            <li />
+          </ul>
         </div>
       </div>
       <div className="flex justify-center">
