@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 type BaseProps = {
   children: React.ReactNode;
+  rounded?: boolean;
   className?: never;
 };
 
@@ -24,8 +25,9 @@ type AsExternalLink = BaseProps &
 type Props = AsButtonProps | AsLinkProps | AsExternalLink;
 
 function Button(props: Props) {
-  const classNames =
-    'flex justify-center items-center text-white p-4 rounded-full hover:underline hover:underline-offset-4';
+  const classNames = `flex justify-center items-center bg-secondary text-white text-xl rounded-full min-w-1/2 shadow-lg hover:bg-secondary/90 ${
+    props.rounded ? '' : 'p-4'
+  }`;
 
   if (props.as === 'link') {
     const { as, children, ...rest } = props;

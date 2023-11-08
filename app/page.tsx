@@ -5,8 +5,9 @@ export const dynamic = 'force-dynamic';
 
 export default function Page() {
   return (
-    <main className="mt-16">
+    <>
+      <h1 className="py-4">Home</h1>
       <Today />
-    </main>
+    </>
   );
 }

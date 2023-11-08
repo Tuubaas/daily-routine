@@ -3,9 +3,17 @@ import { db, CommitmentsTable } from '@/lib/drizzle';
 import type { Commitment } from '@/lib/drizzle';
 import { eq } from 'drizzle-orm';
 import dayjs from 'dayjs';
+import Button from './Button';
 
 export default async function Today() {
-  let commitments: Commitment[] = [];
+  let commitments: Commitment[] = [
+    {
+      id: 1,
+      date: '2023-11-07',
+      commitmentlist: ['Task 1', 'Task 2', 'Task 3', 'Task 4', 'Task 5'],
+      createdAt: new Date('2021-11-07T20:00:00.000Z'),
+    },
+  ];
 
   try {
     commitments = await db
@@ -24,35 +32,32 @@ export default async function Today() {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="bg-yellow-200 shadow-md">
+      <div className="bg-white shadow-md">
         <div className="px-4 flex flex-row justify-between border-b border-gray-400">
-          <h1 className="flex items-end pl-4 pt-6">
+          <h2 className="flex items-end pl-4 pt-6">
             <span>{dayjs().format('YYYY-MM-DD')}</span>
-          </h1>
+          </h2>
         </div>
         <div className="mb-12">
-          <ul className="flex flex-col [&>li]:h-8 [&>li]:border-b [&>li]:border-gray-400 [&>li]:pl-8 [&>li]:pr-4">
+          <ul className="flex flex-col">
             {commitments[0] &&
               [commitments[0]].map((todaysCommitments) =>
                 todaysCommitments.commitmentlist.map((commitment, i) => (
-                  <li key={i} className="flex items-end">
+                  <li
+                    key={i}
+                    className="items-end px-4 py-2 list-disc list-inside"
+                  >
                     <span>{commitment}</span>
                   </li>
                 )),
               )}
-            <li />
-            <li />
-            <li />
           </ul>
         </div>
       </div>
-      <div className="flex justify-center">
-        <a
-          href="commitment"
-          className="mt-12 border border-black rounded-3xl px-12 py-4 text-xl hover:bg-black/5 cursor-pointer"
-        >
+      <div className="flex justify-center mt-12">
+        <Button as="link" href="commitment">
           New
-        </a>
+        </Button>
       </div>
     </div>
   );
